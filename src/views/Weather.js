@@ -12,11 +12,12 @@ function WeatherDisplay() {
             axios.get(url).then((response) => {
                 setData(response.data);
                 console.log(response.data);
+                document.getElementById('change-bg').style.backgroundImage = `url('./assets/01d.jpg')`
                 // document.getElementById('background')
                 // document.body.style.backgroundImage = `url('./assets/01d.jpg')`
             });
             setLocation("");
-        }
+        }   
     };
 
     return (

@@ -25,9 +25,9 @@ function WeatherDisplay() {
             console.log(response.data);
             document.getElementById(
                 "change-bg"
-            ).style.backgroundImage = `url('/assets/10n.jpg')`;
+            ).style.backgroundImage = `url('./assets/${data.weather[0].icon}.jpg')`
             // document.getElementById('background')
-            // document.body.style.backgroundImage = `url('./assets/01d.jpg')`
+            // document.body.style.backgroundImage = `url('./assets/01d.jpg')`y
         });
         setLocation("");
     };

@@ -12,7 +12,7 @@ export const DataProvider = (props) => {
 
     useEffect(() => {
         const getCities = async() => {
-            const collectionRef = collection(db, "cities")
+            const collectionRef = collection(db, "users", user.id, "cities")
             const collectionSnap = await getDocs(collectionRef)
             // const q = query(collectionRef, orderBy('dateCreated', 'desc'))
             // const collectionSnap = await getDocs(q)
@@ -31,7 +31,7 @@ export const DataProvider = (props) => {
             setCities(citiesArr)
         }
         getCities()
-    }, [])
+    }, [user.loggedIn])
 
     const getSingleCity = async (id) => {
         const collectionRef = collection(db, "cities")

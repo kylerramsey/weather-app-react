@@ -49,6 +49,7 @@ export default function App() {
                     {/* <Route path="/" element={<Login />} /> */}
                     <Route path="/Favorites" element={<Favorites />} />
                     <Route path="/Weather" element={<Weather />} />
+                    <Route path="/Weather/:location" element={<Weather />} />
                 </Routes>
             </Router>
         </>

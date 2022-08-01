@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { DataContext } from '../contexts/DataProvider'
 
-export default function CarForm() {
+export default function CityForm() {
     const { addCity } = useContext(DataContext)
 
     function handleSubmit(event) {
@@ -16,7 +16,6 @@ export default function CarForm() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <label htmlFor="city">City</label>
                 <input type="text" name="name" id="" />
             </div>
             <button type="submit">Add City</button>

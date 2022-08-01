@@ -1,30 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function WeatherDisplay() {
     const [data, setData] = useState({});
-    const [location, setLocation] = useState("");
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=83886fbe607f9b2d7d5c5444e557b6c6`;
+    const { location } = useParams();
+    const [currLocation, setLocation] = useState(location);
+    useEffect(() => {
+        if (location) {
+            queryWeather();
+        }
+    }, [currLocation]);
 
     const searchLocation = (event) => {
         if (event.key === "Enter") {
-            axios.get(url).then((response) => {
-                setData(response.data);
-                console.log(response.data);
-                document.getElementById('change-bg').style.backgroundImage = `url('./assets/01d.jpg')`
-                // document.getElementById('background')
-                // document.body.style.backgroundImage = `url('./assets/01d.jpg')`
-            });
-            setLocation("");
-        }   
+            queryWeather();
+        }
+    };
+
+    const queryWeather = () => {
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${currLocation}&units=imperial&appid=83886fbe607f9b2d7d5c5444e557b6c6`;
+        axios.get(url).then((response) => {
+            setData(response.data);
+            console.log(response.data);
+            document.getElementById(
+                "change-bg"
+            ).style.backgroundImage = `url('/assets/10n.jpg')`;
+            // document.getElementById('background')
+            // document.body.style.backgroundImage = `url('./assets/01d.jpg')`
+        });
+        setLocation("");
     };
 
     return (
         <div id="change-bg" className="app">
             <div className="search">
-                <input id=""
-                    value={location}
+                <input
+                    id=""
+                    value={currLocation}
                     onChange={(event) => setLocation(event.target.value)}
                     onKeyPress={searchLocation}
                     placeholder="Enter Location"
@@ -33,7 +46,7 @@ function WeatherDisplay() {
             </div>
             <div className="container">
                 <div className="top">
-                    <div className="location">
+                    <div className="currLocation">
                         <p>{data.name}</p>
                     </div>
                     <div className="temp">

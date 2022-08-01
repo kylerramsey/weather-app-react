@@ -7,7 +7,8 @@ export default function City(props) {
 
         if (!props.hideLink) {
             resHeader = (
-                <Link to={"/Favorites/" + props.city.id}>
+                // Need to link to a page that will automatically run a weather search for that props.city.name listed in 
+                <Link to={"/Weather/"+props.city.name}> 
                     {props.city.id}: {props.city.name}
                 </Link>
             )

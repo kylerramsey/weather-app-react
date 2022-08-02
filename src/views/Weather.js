@@ -35,6 +35,7 @@ function WeatherDisplay() {
     return (
         <div id="change-bg" className="app">
             <div className="search">
+            {/* <button type="button" class="btn btn-primary">Primary</button> */}
                 <input
                     id=""
                     value={currLocation}

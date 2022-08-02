@@ -64,7 +64,6 @@ import {
   Link
 } from 'react-router-dom'
 import CityList from './components/CityList';
-import CitySingle from './views/CitySingle';
 import Weather from './views/Weather';
 import Favorites from './views/Favorites';
 import Login from './views/Login'
@@ -78,7 +77,7 @@ export default function App() {
   return (
     <>
       <Router>
-        <h2>Current User: {user.username}</h2>
+        {/* <h2>Current User: {user.username}</h2> */}
 
         <Routes>
           <Route path="/" element={

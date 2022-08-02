@@ -24,33 +24,50 @@ import { DataContext } from "../contexts/DataProvider";
 import { Login } from "./Login";
 import { AuthProvider } from "../contexts/AuthProvider";
 import { AuthContext } from "../contexts/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 export default function Favorites() {
     const { login, logout, user } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const navigateWeather = () => {
+        // navigate to
+        navigate("/weather");
+    };
 
     return (
         <>
             <div className="app">
                 <div className="container">
-                    {user.loggedIn ? (
+                    <div class="d-flex justify-content-between">
+                        {user.loggedIn ? (
+                            <button
+                                onClick={logout}
+                                id="login-btn"
+                                className="btn btn-dark rounded-pill d-inline-flex mt-3 mb-4"
+                                type="submit"
+                            >
+                                Logout
+                            </button>
+                        ) : (
+                            <button
+                                onClick={login}
+                                id="login-btn"
+                                className="btn btn-dark rounded-pill d-inline-flex mt-3 mb-4"
+                                type="submit"
+                            >
+                                Login
+                            </button>
+                        )}
                         <button
-                            onClick={logout}
-                            id="submit-btn"
-                            className="btn btn-info rounded-pill mt-3 mb-4 btn-lg"
+                            onClick={navigateWeather}
+                            id="weather-btn"
+                            className="btn btn-dark rounded-pill d-inline-flex mt-3 mb-4"
                             type="submit"
                         >
-                            Logout
+                            Search
                         </button>
-                    ) : (
-                        <button
-                            onClick={login}
-                            id="submit-btn"
-                            className="btn btn-info rounded-pill mt-3 mb-4 btn-lg"
-                            type="submit"
-                        >
-                            Login
-                        </button>
-                    )}
+                    </div>
                     <h4>Current User: {user.username}</h4>
 
                     <h1>Favorite Cities</h1>

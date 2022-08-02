@@ -22,6 +22,12 @@ p {
 
 h1 {
     font-size: 6rem;
+    text-align: center;
+}
+
+.app h4 {
+    text-align: center;
+    color: rgba(75, 94, 123, 0.824);
 }
 
 .login {
@@ -119,9 +125,23 @@ a:hover {
 
 .card.card-item {
     background-color: rgb(203, 248, 249);
+    text-align: center;
 }
 
 .form-group input {
     color: rgb(51, 50, 50);
+}
+
+.form-group {
+    text-align: center;
+}
+
+#login-btn {
+   width: 12%; 
+}
+
+#weather-btn {
+    width: 12%;
+    justify-content: end;
 }
 

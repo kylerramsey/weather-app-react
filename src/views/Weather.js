@@ -7,7 +7,7 @@ function WeatherDisplay() {
     const navigate = useNavigate();
 
     const navigateHome = () => {
-        // 👇️ navigate to /
+        // navigate to 
         navigate('/');
       };
     

@@ -26,7 +26,19 @@ h1 {
 
 .login {
     padding-top: 10rem;
-    color: white;
+    color: pink;
+    text-decoration: none;
+}
+
+.login:hover {
+    color: pink;
+}
+
+a {
+    color: whitesmoke;
+}
+a:hover {
+    color: rgb(244, 244, 19);
     text-decoration: none;
 }
 

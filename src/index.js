@@ -11,7 +11,7 @@ root.render(
     <AuthProvider>
       <DataProvider>
         <App />
-      </DataProvider>
+      </DataProvider>   
     </AuthProvider>
   </React.StrictMode>
 );

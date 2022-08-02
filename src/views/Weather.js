@@ -1,8 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 function WeatherDisplay() {
+    const navigate = useNavigate();
+
+    const navigateHome = () => {
+        // 👇️ navigate to /
+        navigate('/');
+      };
+    
+    const { login, logout, user } = useContext(AuthContext);
     const [data, setData] = useState({});
     const { location } = useParams();
     const [currLocation, setLocation] = useState(location);
@@ -25,9 +34,7 @@ function WeatherDisplay() {
             console.log(response.data);
             document.getElementById(
                 "change-bg"
-            ).style.backgroundImage = `url('./assets/${data.weather[0].icon}.jpg')`
-            // document.getElementById('background')
-            // document.body.style.backgroundImage = `url('./assets/01d.jpg')`y
+            ).style.backgroundImage = `url('./assets/${data.weather[0].icon}.jpg')`;
         });
         setLocation("");
     };
@@ -35,7 +42,6 @@ function WeatherDisplay() {
     return (
         <div id="change-bg" className="app">
             <div className="search">
-            {/* <button type="button" class="btn btn-primary">Primary</button> */}
                 <input
                     id=""
                     value={currLocation}
@@ -47,6 +53,14 @@ function WeatherDisplay() {
             </div>
             <div className="container">
                 <div className="top">
+                        <button
+                            onClick={navigateHome}
+                            id="submit-btn"
+                            className="btn btn-light rounded-pill mb-3"
+                            type="submit"   
+                        >
+                            Back
+                        </button>
                     <div className="currLocation">
                         <p>{data.name}</p>
                     </div>

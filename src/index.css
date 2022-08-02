@@ -26,19 +26,19 @@ h1 {
 
 .login {
     padding-top: 10rem;
-    color: pink;
+    color: rgb(255, 231, 235);
     text-decoration: none;
 }
 
 .login:hover {
-    color: pink;
+    color: rgb(255, 224, 230);
 }
 
 a {
-    color: whitesmoke;
+    color: rgba(75, 94, 123, 0.824);
 }
 a:hover {
-    color: rgb(244, 244, 19);
+    color: rgb(236, 181, 248);
     text-decoration: none;
 }
 
@@ -76,7 +76,7 @@ a:hover {
 }   
 
 ::placeholder {
-    color: #ababab;
+    color: #f5dcdc;
 }
 
 .container {
@@ -115,5 +115,13 @@ a:hover {
 
 .bold {
     font-weight: 700;
+}
+
+.card.card-item {
+    background-color: rgb(203, 248, 249);
+}
+
+.form-group input {
+    color: rgb(51, 50, 50);
 }
 

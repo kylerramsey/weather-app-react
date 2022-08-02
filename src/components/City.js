@@ -2,14 +2,22 @@ import { Link } from 'react-router-dom'
 
 export default function City(props) {
 
+    function titleCase(str) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+          str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1); 
+        }
+        return str.join(' ');
+      }
+
     function buildHeader() {
         let resHeader;
+        let titleName = titleCase(props.city.name)
 
         if (!props.hideLink) {
             resHeader = (
-                // Need to link to a page that will automatically run a weather search for that props.city.name listed in 
                 <Link to={"/Weather/"+props.city.name}> 
-                    {props.city.id}: {props.city.name}
+                    {titleName}
                 </Link>
             )
         } else {
@@ -26,7 +34,7 @@ export default function City(props) {
             <h2>
                 {buildHeader()}
             </h2>
-            <p>{props.city.name}</p>
+            {/* <p>{props.city.name}</p> */}
             {/* <p>{props.city.image}</p> */}
             
         </div>

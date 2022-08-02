@@ -16,9 +16,10 @@ export default function CityForm() {
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <input type="text" name="name" id="" />
+                <input type="text" name="name" id="" placeholder='Enter a favorite city'/>
+                <button id="submit-btn" class="btn btn-info rounded-pill d-inline-flex ml-3" type="submit">Submit</button>
             </div>
-            <button type="submit">Add City</button>
+            
         </form>
     )
 }

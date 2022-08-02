@@ -8,7 +8,7 @@ export default function CityList() {
     return (
         <>
             {
-                cities.map(city => <City city={city} key={city.id} />)
+                cities.slice(0,7).map(city => <City city={ city} key={city.id} />)
             }
         </>
     )

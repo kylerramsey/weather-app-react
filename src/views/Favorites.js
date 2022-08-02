@@ -32,18 +32,26 @@ export default function Favorites() {
         <>
             <div className="app">
                 <div className="container">
-                    <ul>
-                        {user.loggedIn ? (
-                            <li>
-                                <button onClick={logout}>Logout</button>
-                            </li>
-                        ) : (
-                            <li>
-                                <button onClick={login}>Login</button>
-                            </li>
-                        )}
-                    </ul>
-                    <h2>Current User: {user.username}</h2>
+                    {user.loggedIn ? (
+                        <button
+                            onClick={logout}
+                            id="submit-btn"
+                            className="btn btn-info rounded-pill mt-3 mb-4 btn-lg"
+                            type="submit"
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <button
+                            onClick={login}
+                            id="submit-btn"
+                            className="btn btn-info rounded-pill mt-3 mb-4 btn-lg"
+                            type="submit"
+                        >
+                            Login
+                        </button>
+                    )}
+                    <h4>Current User: {user.username}</h4>
 
                     <h1>Favorite Cities</h1>
                     <CityForm />

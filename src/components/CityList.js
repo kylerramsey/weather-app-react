@@ -6,7 +6,7 @@ export default function CityList() {
     const { cities } = useContext(DataContext)
 
     return (
-        <>
+        <> 
             {
                 cities.slice(0,7).map(city => <City city={ city} key={city.id} />)
             }

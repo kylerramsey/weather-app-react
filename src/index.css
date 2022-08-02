@@ -137,11 +137,11 @@ a:hover {
 }
 
 #login-btn {
-   width: 12%; 
+   width: auto; 
 }
 
 #weather-btn {
-    width: 12%;
+    width: auto;
     justify-content: end;
 }
 

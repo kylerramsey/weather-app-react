@@ -12,6 +12,9 @@ export const DataProvider = (props) => {
 
     useEffect(() => {
         const getCities = async() => {
+            if (!user.id) {
+                return
+            }
             const collectionRef = collection(db, "users", user.id, "cities")
             const collectionSnap = await getDocs(collectionRef)
             // const q = query(collectionRef, orderBy('dateCreated', 'desc'))
@@ -54,7 +57,7 @@ export const DataProvider = (props) => {
 
     }
 
-    const addCity = async(name, year, sellingPrice) => {
+    const addCity = async(name) => {
         if (!user.loggedIn) {
             throw new Error("You can't add a City if you're not logged in.")
         }

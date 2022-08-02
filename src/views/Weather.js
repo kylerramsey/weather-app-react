@@ -2,24 +2,45 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
+import GoogleMapReact from "google-map-react";
 
 function WeatherDisplay() {
     const navigate = useNavigate();
 
     const navigateHome = () => {
-        // navigate to 
-        navigate('/');
-      };
-    
+        // navigate to
+        navigate("/");
+    };
+
+    // Google maps API section start
+    const AnyReactComponent = ({ text }) => <div>{text}</div>;
+    const defaultProps = {
+        center: {
+            lat: 10.99835602,
+            lng: 77.01502627,
+        },
+        zoom: 11,
+    };
+
+    // Google maps API section end
+
     const { login, logout, user } = useContext(AuthContext);
     const [data, setData] = useState({});
     const { location } = useParams();
     const [currLocation, setLocation] = useState(location);
+    const [background, setBackground] = useState('setbg')
+    useEffect(() => {
+        console.log('BACKGROUND'+ background)
+        document.getElementById(
+            "change-bg"
+        ).style.backgroundImage = `url('/assets/${background}.jpg')`;
+    })
+
     useEffect(() => {
         if (location) {
             queryWeather();
         }
-    }, [currLocation]);
+    }, [location]);
 
     const searchLocation = (event) => {
         if (event.key === "Enter") {
@@ -32,9 +53,7 @@ function WeatherDisplay() {
         axios.get(url).then((response) => {
             setData(response.data);
             console.log(response.data);
-            document.getElementById(
-                "change-bg"
-            ).style.backgroundImage = `url('./assets/${data.weather[0].icon}.jpg')`;
+            setBackground(response.data.weather[0].icon)
         });
         setLocation("");
     };
@@ -53,14 +72,14 @@ function WeatherDisplay() {
             </div>
             <div className="container">
                 <div className="top">
-                        <button
-                            onClick={navigateHome}
-                            id="submit-btn"
-                            className="btn btn-light rounded-pill mb-3"
-                            type="submit"   
-                        >
-                            Back
-                        </button>
+                    <button
+                        onClick={navigateHome}
+                        id="submit-btn"
+                        className="btn btn-light rounded-pill mb-3"
+                        type="submit"
+                    >
+                        Back
+                    </button>
                     <div className="currLocation">
                         <p>{data.name}</p>
                     </div>
@@ -73,6 +92,20 @@ function WeatherDisplay() {
                         {data.weather ? <p>{data.weather[0].main}</p> : null}
                     </div>
                 </div>
+
+                {/* <div style={{ height: "100vh", width: "100%" }}>
+                    <GoogleMapReact
+                        bootstrapURLKeys={{ key: "AIzaSyB6XqhoDJwuOYjkv14tm2vfWB9ZkeAr7UQ" }}
+                        defaultCenter={defaultProps.center}
+                        defaultZoom={defaultProps.zoom}
+                    >
+                        <AnyReactComponent
+                            lat={10.99835602}
+                            lng={10.99835602}
+                            text="My Marker"
+                        />
+                    </GoogleMapReact>
+                </div> */}
 
                 {data.name != undefined && (
                     <div className="bottom">

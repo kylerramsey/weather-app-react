@@ -93,20 +93,6 @@ function WeatherDisplay() {
                     </div>
                 </div>
 
-                {/* <div style={{ height: "100vh", width: "100%" }}>
-                    <GoogleMapReact
-                        bootstrapURLKeys={{ key: "AIzaSyB6XqhoDJwuOYjkv14tm2vfWB9ZkeAr7UQ" }}
-                        defaultCenter={defaultProps.center}
-                        defaultZoom={defaultProps.zoom}
-                    >
-                        <AnyReactComponent
-                            lat={10.99835602}
-                            lng={10.99835602}
-                            text="My Marker"
-                        />
-                    </GoogleMapReact>
-                </div> */}
-
                 {data.name != undefined && (
                     <div className="bottom">
                         <div className="feels">
